@@ -24,7 +24,7 @@ public class ProductService {
     }
 
     /*
-    //Esse Método busca todos os Serviços
+    //Esse Método busca todos os Serviços/Registros
     @Transactional(readOnly = true)
     public List<ProductDTO > findAll() {
         List<Product > result = repository.findAll();
@@ -40,5 +40,19 @@ public class ProductService {
         return result.map(x -> new ProductDTO(x));
     }
 
+    // Esse Método Permite a Inserção de Produtos a partir do FrontEnd
+    @Transactional
+    public ProductDTO insert(ProductDTO dto) {
+
+        Product entity = new Product();
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setPrice(dto.getPrice());
+        entity.setImUrl(dto.getImgUrl());
+
+        entity = repository.save(entity);
+
+        return new ProductDTO(entity);
+    }
 
 }
