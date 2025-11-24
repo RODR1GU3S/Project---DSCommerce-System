@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 public class ProductService {
 
@@ -73,18 +71,6 @@ public class ProductService {
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
-        entity.setImUrl(dto.getImgUrl());
+        entity.setImgUrl(dto.getImgUrl());
     }
 }
-
-
-
-
-    /*
-    //Esse Método busca todos os Serviços/Registros
-    @Transactional(readOnly = true)
-    public List<ProductDTO > findAll() {
-        List<Product > result = repository.findAll();
-        return result.stream().map(x -> new ProductDTO(x)).toList();
-    }
-    */
